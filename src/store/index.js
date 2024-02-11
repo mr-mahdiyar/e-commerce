@@ -3,7 +3,7 @@ import sidebarReducer from "./SidebarSlice";
 
 const store = configureStore({
     reducer: {
-        sidebarReducer
+        sidebar: sidebarReducer
     }
 })
 
