@@ -4,8 +4,8 @@ const initialState = {
     isSidebarOn: false
 }
 
-const sidebarSlice = createSlice({
-    name: "SidebarSlice",
+const SidebarSlice = createSlice({
+    name: "sidebar",
     initialState,
     reducers: {
         setSidebarOn: (prevState) => {
@@ -17,6 +17,6 @@ const sidebarSlice = createSlice({
     }
 })
 
-export const {setSidebarOn, setSidebarOff} = sidebarSlice.actions
+export const {setSidebarOn, setSidebarOff} = SidebarSlice.actions
 export const getSidebarStatus = (state) => state.sidebar.isSidebarOn
-export default sidebarSlice.reducer
+export default SidebarSlice.reducer

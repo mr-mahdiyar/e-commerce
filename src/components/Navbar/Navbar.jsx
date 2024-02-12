@@ -2,11 +2,12 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebarOn, getSidebarStatus } from "../../store/SidebarSlice";
+
 const Navbar = () => {
 
   const dispatch = useDispatch()
-  const sidebarStatus = useSelector(getSidebarStatus)
-  
+  //const sidebarStatus = useSelector(getSidebarStatus)
+
   return (
     <nav className="navbar">
       <div className="navbar-cnt flex align-center">
