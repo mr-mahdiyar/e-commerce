@@ -6,7 +6,7 @@ const Navbar = () => {
 
   const dispatch = useDispatch()
   const sidebarStatus = useSelector(getSidebarStatus)
-  console.log(sidebarStatus);
+  
   return (
     <nav className="navbar">
       <div className="navbar-cnt flex align-center">
