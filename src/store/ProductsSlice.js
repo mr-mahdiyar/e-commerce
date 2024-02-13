@@ -49,10 +49,14 @@ export const fetchAsyncProducts = createAsyncThunk("products/fetch", async (limi
 })
 
 export const fetchAsyncSingleProduct = createAsyncThunk("products/singleProduct/fetch", async (id) => {
-    const response = getSingleProduct(id)
+    const response = await getSingleProduct(id)
     return response.data
 })
 
-export default ProductsSLice.reducer
 
 export const getAllProducts = (state) => state.products.products
+export const getProductsStatus = (state) => state.products.productsStatus
+export const getSingleProduct = (state) => state.products.productSingle
+export const getSingleProductsStatus = (state) => state.products.productSingleStatus
+
+export default ProductsSLice.reducer
