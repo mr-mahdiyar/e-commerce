@@ -1,10 +1,13 @@
 import React from 'react'
-
+import { Outlet } from 'react-router-dom'
+import { Header, Sidebar } from "./";
 const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Header />
+      <Sidebar />
+      <Outlet />
+    </>
   )
 }
 
