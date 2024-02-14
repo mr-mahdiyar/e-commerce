@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import "./Sidebar.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSidebarStatus, setSidebarOff } from "../../store/SidebarSlice";
-import { getAllCategories } from "../../store/CategorySlice";
+import { getSidebarStatus, setSidebarOff } from "../../app/sidebarSlice";
+import { getAllCategories } from "../../app/categorySlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();

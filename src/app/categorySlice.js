@@ -14,7 +14,7 @@ const initialState = {
     categoryProductsStatus: STATUS.IDEL
 }
 
-const CategorySlice = createSlice({
+const categorySlice = createSlice({
     name: "category",
     initialState,
     reducers: {},
@@ -34,4 +34,4 @@ const CategorySlice = createSlice({
 })
 
 export const getAllCategories = (state) => state.category.categories
-export default CategorySlice.reducer
+export default categorySlice.reducer

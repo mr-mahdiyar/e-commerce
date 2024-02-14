@@ -9,7 +9,7 @@ const initialState = {
     productSingleStatus: STATUS.IDLE
 }
 
-const ProductsSLice = createSlice({
+const productsSLice = createSlice({
     name: "products",
     initialState,
     reducers: {},
@@ -54,9 +54,9 @@ export const fetchAsyncSingleProduct = createAsyncThunk("products/singleProduct/
 })
 
 
-export const getAllProducts = (state) => state.products.products
+export const getAllProducts = (state) => state.products
 export const getProductsStatus = (state) => state.products.productsStatus
-export const getSingleProduct = (state) => state.products.productSingle
+export const getProductSingle = (state) => state.products.productSingle
 export const getSingleProductsStatus = (state) => state.products.productSingleStatus
 
-export default ProductsSLice.reducer
+export default productsSLice.reducer
