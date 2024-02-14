@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductList.scss"
 import { Product } from "../..";
 const ProductList = ({ products }) => {
-  console.log(products);
+  //console.log(products);
   return (
     <div className="product-lists grid bg-whitesmoke my-3">
       {products.map((product) => {

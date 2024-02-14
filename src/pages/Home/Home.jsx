@@ -21,7 +21,7 @@ const Home = () => {
   const products = useSelector(getAllProducts);
   
   const productsStatus = useSelector(getAllProductsStatus);
-  console.log(products);
+  //console.log(products);
 
   return (
     <div>

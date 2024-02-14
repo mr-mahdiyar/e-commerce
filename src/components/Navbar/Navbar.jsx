@@ -13,7 +13,7 @@ const Navbar = () => {
     dispatch(fetchAsyncCategories())
   }, [dispatch])
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <nav className="navbar">
