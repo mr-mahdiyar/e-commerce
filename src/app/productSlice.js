@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { STATUS } from "../utils/Status"
+import { STATUS } from "../utils/status"
 import { getProducts, getSingleProduct } from "../Services/services";
 
 const initialState = {
@@ -45,7 +45,7 @@ const productsSLice = createSlice({
 
 export const fetchAsyncProducts = createAsyncThunk("products/fetch", async (limit) => {
     const response = await getProducts(limit)
-    return response.data
+    return response.data.products
 })
 
 export const fetchAsyncSingleProduct = createAsyncThunk("products/singleProduct/fetch", async (id) => {
@@ -55,7 +55,7 @@ export const fetchAsyncSingleProduct = createAsyncThunk("products/singleProduct/
 
 
 export const getAllProducts = (state) => state.products
-export const getProductsStatus = (state) => state.products.productsStatus
+export const getAllProductsStatus = (state) => state.products.productsStatus
 export const getProductSingle = (state) => state.products.productSingle
 export const getSingleProductsStatus = (state) => state.products.productSingleStatus
 
