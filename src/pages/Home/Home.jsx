@@ -19,8 +19,9 @@ const Home = () => {
   }, [dispatch]);
 
   const products = useSelector(getAllProducts);
+  
   const productsStatus = useSelector(getAllProductsStatus);
-  //console.log(products);
+  console.log(products);
 
   return (
     <div>
@@ -38,7 +39,7 @@ const Home = () => {
                 {productsStatus === STATUS.LOADING ? (
                   <Loader />
                 ) : (
-                  <ProductList />
+                  <ProductList products={products}/>
                 )}
               </div>
             </div>

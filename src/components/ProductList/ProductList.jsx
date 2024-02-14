@@ -1,11 +1,19 @@
-import React from 'react'
-
-const ProductsList = () => {
+import React from "react";
+import "./ProductList.scss"
+import { Product } from "../..";
+const ProductList = ({ products }) => {
+  console.log(products);
   return (
-    <div>
-      Products list
+    <div className="product-lists grid bg-whitesmoke my-3">
+      {products.map((product) => {
+        let discountedPrice =
+          product.price - product.price * (product.discountPercentage / 100);
+        return (
+          <Product key={product.id} product={{ ...product, discountedPrice }} />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default ProductsList
+export default ProductList;

@@ -54,7 +54,7 @@ export const fetchAsyncSingleProduct = createAsyncThunk("products/singleProduct/
 })
 
 
-export const getAllProducts = (state) => state.products
+export const getAllProducts = (state) => state.products.products
 export const getAllProductsStatus = (state) => state.products.productsStatus
 export const getProductSingle = (state) => state.products.productSingle
 export const getSingleProductsStatus = (state) => state.products.productSingleStatus
