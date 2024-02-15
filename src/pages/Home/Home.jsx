@@ -19,9 +19,22 @@ const Home = () => {
   }, [dispatch]);
 
   const products = useSelector(getAllProducts);
-  
+
   const productsStatus = useSelector(getAllProductsStatus);
   //console.log(products);
+
+  // randomizing the products in the list
+  const tempProducts = [];
+  if (products.length > 0) {
+    for (let i in products) {
+      let randomIndex = Math.floor(Math.random() * products.length);
+
+      while (tempProducts.includes(products[randomIndex])) {
+        randomIndex = Math.floor(Math.random() * products.length);
+      }
+      tempProducts[i] = products[randomIndex];
+    }
+  }
 
   return (
     <div>
@@ -39,7 +52,7 @@ const Home = () => {
                 {productsStatus === STATUS.LOADING ? (
                   <Loader />
                 ) : (
-                  <ProductList products={products}/>
+                  <ProductList products={tempProducts} />
                 )}
               </div>
             </div>
