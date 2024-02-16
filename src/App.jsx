@@ -1,12 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Header, Sidebar } from "./";
+import { Header, Sidebar, Footer } from "./";
 const App = () => {
   return (
     <>
       <Header />
       <Sidebar />
       <Outlet />
+      <Footer />
     </>
   )
 }
