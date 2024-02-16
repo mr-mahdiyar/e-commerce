@@ -36,6 +36,11 @@ const Home = () => {
     }
   }
 
+  let catProductsOne = products.filter(product => product.category === categories[0]);
+  let catProductsTwo = products.filter(product => product.category === categories[1]);
+  let catProductsThree = products.filter(product => product.category === categories[2]);
+  let catProductsFour = products.filter(product => product.category === categories[3]);
+
   return (
     <div>
       <div className="slider-wrapper">
@@ -54,6 +59,37 @@ const Home = () => {
                 ) : (
                   <ProductList products={tempProducts} />
                 )}
+              </div>
+              <div>
+              { productsStatus === STATUS.LOADING ? <Loader /> : <ProductList products = {tempProducts} />}
+            </div>
+
+            <div className='categories-item'>
+              <div className='title-md'>
+                <h3>{categories[0]}</h3>
+              </div>
+              {productsStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsOne} />}
+            </div>
+
+            <div className='categories-item'>
+              <div className='title-md'>
+                <h3>{categories[1]}</h3>
+              </div>
+              {productsStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsTwo} />}
+            </div>
+
+            <div className='categories-item'>
+              <div className='title-md'>
+                <h3>{categories[2]}</h3>
+              </div>
+              {productsStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsThree} />}
+            </div>
+
+            <div className='categories-item'>
+              <div className='title-md'>
+                <h3>{categories[3]}</h3>
+              </div>
+              {productsStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsFour} />}
               </div>
             </div>
           </div>
