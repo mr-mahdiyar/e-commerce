@@ -8,4 +8,4 @@ export { default as Loader } from "./components/Loader/Loader"
 export { default as ProductList } from "./components/ProductList/ProductList"
 export { default as Product } from "./components/Product/Product"
 export { default as Footer } from "./components/Footer/Footer"
-
+export { default as ProductSinglePage } from "./pages/ProductSinglePage/ProductSinglePage"
