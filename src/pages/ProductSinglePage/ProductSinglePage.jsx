@@ -10,13 +10,14 @@ import {
 import { STATUS } from "../../utils/status";
 import { formatPrice } from "../../utils/helpers";
 import { Loader } from "../../";
+import { addToCart } from "../../app/cartSlice";
 
 const ProductSinglePage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncSingleProduct(id));
-  }, [dispatch]);
+  }, []);
 
   const product = useSelector(getProductSingle);
   const singleProductStatus = useSelector(getSingleProductStatus);
@@ -32,10 +33,9 @@ const ProductSinglePage = () => {
 
   const increaseQty = () => {
     setQuantity((prevState) => {
-      if (prevState + 1 > product?.stock) {
-        return product?.stock;
-      }
-      return prevState + 1;
+      let tempQty = prevState + 1;
+      if (tempQty > product?.stock) tempQty = product?.stock;
+      return tempQty;
     });
   };
   const decreaseQty = () => {
@@ -45,6 +45,17 @@ const ProductSinglePage = () => {
       }
       return prevState - 1;
     });
+  };
+
+  const addToCartHandler = (product) => {
+    let discountedPrice =
+      product?.price - product?.price * (product?.discountPercentage / 100);
+    let totalPrice = quantity * discountedPrice;
+
+    dispatch(
+      addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice })
+    );
+    
   };
 
   return (
@@ -185,7 +196,7 @@ const ProductSinglePage = () => {
                 <div className="btns">
                   <button type="button" className="add-to-cart-btn btn">
                     <i className="fas fa-shopping-cart"></i>
-                    <span>
+                    <span onClick={() => addToCartHandler(product)}>
                       add to cart
                     </span>
                   </button>
