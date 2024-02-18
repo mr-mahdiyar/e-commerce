@@ -62,4 +62,5 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer;
 export const getCartMessageStatus = (state) => state.carts.isCartMessageOn;
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, setCartMessageOf, setCartMessageOn } =
+  cartSlice.actions;

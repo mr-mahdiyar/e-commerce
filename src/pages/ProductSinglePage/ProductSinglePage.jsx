@@ -10,7 +10,12 @@ import {
 import { STATUS } from "../../utils/status";
 import { formatPrice } from "../../utils/helpers";
 import { Loader } from "../../";
-import { addToCart } from "../../app/cartSlice";
+import {
+  addToCart,
+  getCartMessageStatus,
+  setCartMessageOf,
+  setCartMessageOn,
+} from "../../app/cartSlice";
 
 const ProductSinglePage = () => {
   const { id } = useParams();
@@ -18,10 +23,18 @@ const ProductSinglePage = () => {
   useEffect(() => {
     dispatch(fetchAsyncSingleProduct(id));
   }, []);
+  
+  useEffect(() => {
+    if (getCartMessageStatus) {
+      setTimeout(() => {
+        dispatch(setCartMessageOf());
+      }, 2000);
+    }
+  }, [cartMessageStatus]);
 
   const product = useSelector(getProductSingle);
   const singleProductStatus = useSelector(getSingleProductStatus);
-
+  const cartMessageStatus = useSelector(getCartMessageStatus);
   const [quantity, setQuantity] = useState(1);
 
   let discountedPrice =
@@ -55,7 +68,7 @@ const ProductSinglePage = () => {
     dispatch(
       addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice })
     );
-    
+    dispatch(setCartMessageOn(true));
   };
 
   return (
