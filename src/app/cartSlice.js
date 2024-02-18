@@ -51,8 +51,15 @@ const cartSlice = createSlice({
         storeInLocalStorage(state.carts);
       }
     },
+    setCartMessageOn: (state) => {
+      state.isCartMessageOn = true;
+    },
+    setCartMessageOf: (state) => {
+      state.isCartMessageOn = false;
+    },
   },
 });
 
 export default cartSlice.reducer;
+export const getCartMessageStatus = (state) => state.carts.isCartMessageOn;
 export const { addToCart } = cartSlice.actions;
