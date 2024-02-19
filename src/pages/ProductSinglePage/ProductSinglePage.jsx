@@ -24,6 +24,12 @@ const ProductSinglePage = () => {
     dispatch(fetchAsyncSingleProduct(id));
   }, []);
   
+  
+  const product = useSelector(getProductSingle);
+  const singleProductStatus = useSelector(getSingleProductStatus);
+  const cartMessageStatus = useSelector(getCartMessageStatus);
+  const [quantity, setQuantity] = useState(1);
+  
   useEffect(() => {
     if (getCartMessageStatus) {
       setTimeout(() => {
@@ -31,11 +37,6 @@ const ProductSinglePage = () => {
       }, 2000);
     }
   }, [cartMessageStatus]);
-
-  const product = useSelector(getProductSingle);
-  const singleProductStatus = useSelector(getSingleProductStatus);
-  const cartMessageStatus = useSelector(getCartMessageStatus);
-  const [quantity, setQuantity] = useState(1);
 
   let discountedPrice =
     product?.price - product?.price * (product?.discountPercentage / 100);
