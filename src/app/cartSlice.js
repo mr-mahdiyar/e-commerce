@@ -7,10 +7,9 @@ const fetchFromLocalStorage = () => {
   } else {
     return [];
   }
-
-  const storeInLocalStorage = (data) => {
-    localStorage.setItem("data", JSON.stringify(data));
-  };
+};
+const storeInLocalStorage = (data) => {
+  localStorage.setItem("data", JSON.stringify(data));
 };
 const initialState = {
   carts: fetchFromLocalStorage(),
@@ -61,6 +60,6 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const getCartMessageStatus = (state) => state.cart.isCartMessageOn
+export const getCartMessageStatus = (state) => state.cart.isCartMessageOn;
 export const { addToCart, setCartMessageOf, setCartMessageOn } =
   cartSlice.actions;
