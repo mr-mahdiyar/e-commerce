@@ -57,7 +57,7 @@ const cartSlice = createSlice({
       state.isCartMessageOn = false;
     },
     removeFromCart: (state, action) => {
-      const tempCart = state.filter((item) => item.id !== action.payload);
+      const tempCart = state.carts.filter((item) => item.id !== action.payload);
       state.carts = tempCart;
       storeInLocalStorage(state.carts);
     },
@@ -110,7 +110,7 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const { addToCart, setCartMessageOf, setCartMessageOn, getCartTotal, toggleCartQty, clearCart } = cartSlice.actions;
+export const { addToCart, setCartMessageOf, setCartMessageOn, getCartTotal, toggleCartQty, clearCart, removeFromCart } = cartSlice.actions;
 
 export const getCartMessageStatus = (state) => state.cart.isCartMessageOn;
 export const getAllCarts = (state) => state.cart.carts
