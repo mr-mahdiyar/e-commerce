@@ -61,10 +61,10 @@ const cartSlice = createSlice({
       state.carts = tempCart;
       storeInLocalStorage(state.carts);
     },
-    clearCart: (_, state) => {
+    clearCart: (state, _) => {
       (state.carts = []), storeInLocalStorage(state.carts);
     },
-    getCartTotal: (_, state) => {
+    getCartTotal: (state, _) => {
       state.totalAmount = state.carts.reduce((cartTotal, cartItem) => {
         return (cartTotal += cartItem.totalPrice);
       }, 0);

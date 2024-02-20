@@ -4,14 +4,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSidebarOn, getSidebarStatus } from "../../app/sidebarSlice";
 import { fetchAsyncCategories, getAllCategories } from "../../app/categorySlice";
 import { useEffect } from "react";
+import { getAllCarts, getCartItemCount, getCartTotal } from "../../app/cartSlice";
 const Navbar = () => {
   const dispatch = useDispatch();
-  //const sidebarStatus = useSelector(getSidebarStatus)
+  // const sidebarStatus = useSelector(getSidebarStatus)
   const categories = useSelector(getAllCategories);
-  
+  const carts = useSelector(getAllCarts)
+  const itemsCount = useSelector(getCartItemCount)
+
+  // console.log(itemsCount);
+
   useEffect(() => {
     dispatch(fetchAsyncCategories())
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getCartTotal())
+  }, [carts])
 
   // console.log(categories);
 
@@ -67,7 +76,7 @@ const Navbar = () => {
         <div className="navbar-cart flex align-center">
           <Link to="/cart" className="cart-btn">
             <i className="fa-solid fa-cart-shopping"></i>
-            <div className="cart-items-value">0</div>
+            <div className="cart-items-value">{itemsCount}</div>
           </Link>
         </div>
       </div>
