@@ -2,25 +2,33 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebarOn, getSidebarStatus } from "../../app/sidebarSlice";
-import { fetchAsyncCategories, getAllCategories } from "../../app/categorySlice";
+import {
+  fetchAsyncCategories,
+  getAllCategories,
+} from "../../app/categorySlice";
 import { useEffect } from "react";
-import { getAllCarts, getCartItemCount, getCartTotal } from "../../app/cartSlice";
+import {
+  getAllCarts,
+  getCartItemCount,
+  getCartTotal,
+} from "../../app/cartSlice";
+import { CartModal } from "../..";
 const Navbar = () => {
   const dispatch = useDispatch();
   // const sidebarStatus = useSelector(getSidebarStatus)
   const categories = useSelector(getAllCategories);
-  const carts = useSelector(getAllCarts)
-  const itemsCount = useSelector(getCartItemCount)
+  const carts = useSelector(getAllCarts);
+  const itemsCount = useSelector(getCartItemCount);
 
   // console.log(itemsCount);
 
   useEffect(() => {
-    dispatch(fetchAsyncCategories())
-  }, [dispatch])
+    dispatch(fetchAsyncCategories());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getCartTotal())
-  }, [carts])
+    dispatch(getCartTotal());
+  }, [carts]);
 
   // console.log(categories);
 
@@ -65,8 +73,11 @@ const Navbar = () => {
           <ul className="navbar-nav flex align-center fs-12 fw-4 font-manrope">
             {categories.slice(0, 8).map((category, idx) => (
               <li className="nav-item no-wrap" key={idx}>
-                <Link to={`category/${category}`} className="nav-link text-capitalize">
-                  {category }
+                <Link
+                  to={`category/${category}`}
+                  className="nav-link text-capitalize"
+                >
+                  {category}
                 </Link>
               </li>
             ))}
@@ -77,6 +88,7 @@ const Navbar = () => {
           <Link to="/cart" className="cart-btn">
             <i className="fa-solid fa-cart-shopping"></i>
             <div className="cart-items-value">{itemsCount}</div>
+            <CartModal carts={carts} />
           </Link>
         </div>
       </div>
