@@ -56,10 +56,62 @@ const cartSlice = createSlice({
     setCartMessageOf: (state) => {
       state.isCartMessageOn = false;
     },
+    removeFromCart: (state, action) => {
+      const tempCart = state.filter((item) => item.id !== action.payload);
+      state.carts = tempCart;
+      storeInLocalStorage(state.carts);
+    },
+    clearCart: (_, state) => {
+      (state.carts = []), storeInLocalStorage(state.carts);
+    },
+    getCartTotal: (_, state) => {
+      state.totalAmount = state.carts.reduce((cartTotal, cartItem) => {
+        return (cartTotal += cartItem.totalPrice);
+      }, 0);
+      state.itemsCount = state.carts.length;
+    },
+
+    toggleCartQty: (state, action) => {
+      const tempCart = state.carts.map((item) => {
+        if (item.id === action.payload.id) {
+          let tempQty = item.quantity;
+          let tempTotalPrice = item.totalPrice;
+
+          if (action.payload.type === "INC") {
+            tempQty++;
+            if (tempQty === item.stock) tempQty = item.stock;
+            tempTotalPrice = tempQty * item.discountedPrice;
+          }
+
+          if (action.payload.type === "DEC") {
+            tempQty--;
+            if (tempQty < 1) tempQty = 1;
+            tempTotalPrice = tempQty * item.discountedPrice;
+          }
+
+          return { ...item, quantity: tempQty, totalPrice: tempTotalPrice };
+        } else {
+          return item;
+        }
+      });
+
+      state.carts = tempCart;
+      storeInLocalStorage(state.carts);
+    },
+
+    setCartMessageOn: (state) => {
+      state.isCartMessageOn = true;
+    },
+
+    setCartMessageOff: (state) => {
+      state.isCartMessageOn = false;
+    },
   },
 });
 
 export default cartSlice.reducer;
+export const { addToCart, setCartMessageOf, setCartMessageOn, getCartTotal, toggleCartQty, clearCart } = cartSlice.actions;
+
 export const getCartMessageStatus = (state) => state.cart.isCartMessageOn;
-export const { addToCart, setCartMessageOf, setCartMessageOn } =
-  cartSlice.actions;
+export const getAllCarts = (state) => state.cart.carts
+export const getCartItemCount = (state) => state.cart.itemsCount
