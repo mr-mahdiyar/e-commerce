@@ -16,20 +16,19 @@ import {
   setCartMessageOf,
   setCartMessageOn,
 } from "../../app/cartSlice";
-
+import { CartMessage } from "../../";
 const ProductSinglePage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncSingleProduct(id));
   }, []);
-  
-  
+
   const product = useSelector(getProductSingle);
   const singleProductStatus = useSelector(getSingleProductStatus);
   const cartMessageStatus = useSelector(getCartMessageStatus);
   const [quantity, setQuantity] = useState(1);
-  
+
   useEffect(() => {
     if (getCartMessageStatus) {
       setTimeout(() => {
@@ -223,6 +222,7 @@ const ProductSinglePage = () => {
           </div>
         </div>
       </div>
+      {cartMessageStatus && <CartMessage />}
     </main>
   );
 };
