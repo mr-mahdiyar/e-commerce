@@ -16,7 +16,7 @@ const Sidebar = () => {
         className="sidebar-hide-btn"
         onClick={() => dispatch(setSidebarOff())}
       >
-        <i className="fa-solid fa-xmark"></i>
+        <i className="fa-solid fa-xmark"></i> 
       </button>
       <div className="sidebar-cnt">
         <div className="cat-title fs-17 text-uppercase fw-6 ls-1h">
@@ -24,7 +24,7 @@ const Sidebar = () => {
         </div>
         <ul className="cat-list">
           {categories.slice(0,8).map((category, idx) => (
-            <li key={idx}>
+            <li key={idx} onClick={() => dispatch(setSidebarOff())}>
               <Link to={`category/${category}`} className="cat-list-link text-capitalize">{category.replace('-', ' ')}</Link>
             </li>
           ))}
