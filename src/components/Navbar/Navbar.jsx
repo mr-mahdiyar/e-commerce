@@ -6,7 +6,7 @@ import {
   fetchAsyncCategories,
   getAllCategories,
 } from "../../app/categorySlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   getAllCarts,
   getCartItemCount,
@@ -19,7 +19,7 @@ const Navbar = () => {
   const categories = useSelector(getAllCategories);
   const carts = useSelector(getAllCarts);
   const itemsCount = useSelector(getCartItemCount);
-
+  const [searchTerm, setSearchTerm] = useState("")
   // console.log(itemsCount);
 
   useEffect(() => {
@@ -30,6 +30,10 @@ const Navbar = () => {
     dispatch(getCartTotal());
   }, [carts]);
 
+  const searchTermChangeHandler = (event) => {
+    event.preventDefault()
+    setSearchTerm(event.target.value)
+  }
   // console.log(categories);
 
   return (
@@ -43,7 +47,7 @@ const Navbar = () => {
           >
             <i className="fas fa-bars"></i>
           </button>
-          <Link to="/" className="navbar-brand flex align-center">
+          <Link to="" className="navbar-brand flex align-center">
             <span className="navbar-brand-ico">
               <i className="fa-solid fa-bag-shopping"></i>
             </span>
@@ -60,9 +64,10 @@ const Navbar = () => {
                 type="text"
                 className="form-control fs-14"
                 placeholder="Search your preferred items here"
+                onChange={(event) => searchTermChangeHandler(event)}
               />
               <Link
-                to=""
+                to={`search/${searchTerm}`}
                 className="text-white search-btn flex align-center justify-center"
               >
                 <i className="fa-solid fa-magnifying-glass"></i>

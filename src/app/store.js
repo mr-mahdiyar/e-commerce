@@ -11,7 +11,7 @@ const store = configureStore({
         category: categoryReducer,
         products : productsSlice,
         cart: cartReducer,
-        serch: searchReducer
+        search: searchReducer
     }
 })
 

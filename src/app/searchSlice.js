@@ -38,6 +38,6 @@ export const fetchAsyncSearchProduct = createAsyncThunk('product-search/fetch', 
 });
 
 export const { setSearchTerm, clearSearch } = searchSlice.actions;
-export const getSearchProducts = (state) => state.search.searchProducts;
+export const getSearchProducts = (state) => state.search.searchProducts
 export const getSearchProductsStatus = (state) => state.search.searchProductsStatus;
 export default searchSlice.reducer;

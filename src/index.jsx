@@ -12,3 +12,4 @@ export { default as ProductSinglePage } from "./pages/ProductSinglePage/ProductS
 export { default as CartModal } from "./components/CartModal/CartModal"
 export { default as CartPage } from "./pages/CartPage/CartPage"
 export { default as CategoryProductPage } from "./pages/CategoryProductsPage/CategoryProductsPage"
+export {default as SearchPage } from "./pages/SearchPage/SearchPage"

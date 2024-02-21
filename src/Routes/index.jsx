@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { App, Home, ProductSinglePage, CartPage, CategoryProductPage } from "..";
+import { App, Home, ProductSinglePage, CartPage, CategoryProductPage, SearchPage } from "..";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
         {
           path: "category/:category",
           element: <CategoryProductPage />
+        },
+        {
+          path: "search/:searchTerm",
+          element: <SearchPage />
         }
     ],
   },
