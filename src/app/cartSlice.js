@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const fetchFromLocalStorage = () => {
-  const cart = localStorage.getItem("cart");
+  let cart = localStorage.getItem("cart");
   if (cart) {
-    return JSON.parse(localStorage.getItem(cart));
+    return JSON.parse(localStorage.getItem("cart"));
   } else {
     return [];
   }
 };
+
 const storeInLocalStorage = (data) => {
-  localStorage.setItem("data", JSON.stringify(data));
+  localStorage.setItem("cart", JSON.stringify(data));
 };
 const initialState = {
   carts: fetchFromLocalStorage(),
