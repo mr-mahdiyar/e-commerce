@@ -33,10 +33,10 @@ const categorySlice = createSlice({
         .addCase(fetchAsyncProductsCategory.pending, (state, _ ) => {
             state.categoryProductsStatus = STATUS.LOADING
         })
-        .addCase(fetchAsyncProductsCategory.fulfilled, (state, action => {
+        .addCase(fetchAsyncProductsCategory.fulfilled, (state, action) => {
             state.categoryProducts = action.payload
             state.categoryProductsStatus = STATUS.SUCCEEDED
-        }))
+        })
         .addCase(fetchAsyncProductsCategory.rejected, (state, _ ) => {
             state.categoryProductsStatus = STATUS.FAILED
         })
